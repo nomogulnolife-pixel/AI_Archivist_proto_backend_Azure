@@ -1,0 +1,27 @@
+name: Build and deploy Python app to Azure Web App
+
+on:
+  push:
+    branches:
+      - master   # ← masterでなければ main に
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # ⚠️ Azure(Oryx)でビルドするので、ここでvenvは作らない
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: tech0-gen-11-step3-2-py-52
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_XXXX }}
+          package: .
