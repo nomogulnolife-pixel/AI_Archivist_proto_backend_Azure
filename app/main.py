@@ -81,8 +81,8 @@ def build_sas_blob_url(blob_url: str) -> str:
         permission=BlobSasPermissions(read=True),
         expiry=datetime.now(timezone.utc) + timedelta(minutes=1500),  # 有効期限
         # PDFとして開くために追加
-        content_type="application/pdf"
-        content_disposition="inline"
+        content_type="application/pdf",
+        content_disposition="inline",
     )
 
 #    return f"{parsed.scheme}://{parsed.netloc}/{container_name}/{blob_name_enc}?{sas}"
