@@ -19,9 +19,15 @@
  2. uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 
 
+========== search, indexの動かし方(管理者パスワード付き) ==========
 
+curl -H "X-ADMIN-PASSWORD: <password>" \
+  "http://localhost:8000/search?question=test&k=3"
 
-
+curl -X POST -H "Content-Type: application/json" \
+  -H "X-ADMIN-PASSWORD: <password>" \
+  -d '{"container":"mof2-blob-all","prefix":"docs/"}' \
+  "http://localhost:8000/index"
 
 
 # --------------------------------------
