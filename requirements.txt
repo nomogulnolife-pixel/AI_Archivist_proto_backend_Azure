@@ -6,3 +6,4 @@ openai
 pypdf
 gunicorn
 PyMuPDF
+google-auth
