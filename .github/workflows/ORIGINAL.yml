@@ -1,5 +1,9 @@
 name: Build and deploy Python app to Azure Web App
 
+concurrency:
+  group: deploy-tech0-gen-11-step3-2-py-52
+  cancel-in-progress: true
+
 on:
   push:
     branches:
