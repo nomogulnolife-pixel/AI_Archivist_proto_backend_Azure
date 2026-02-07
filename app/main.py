@@ -183,7 +183,7 @@ def ask_api(
     x_user_email: str | None = Header(default=None, alias="X-USER-EMAIL"),
 ):
     # バックエンドのパスワードによる BFF認証
-    require_bff_secret(x_bff_secret)
+    #vSrequire_bff_secret(x_bff_secret)
 
     # ② Google IDトークン検証＋「メールに数字」チェック
     user = verify_google_id_token_and_digit_email(authorization)
