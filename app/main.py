@@ -75,7 +75,9 @@ def verify_google_id_token_and_digit_email(authorization: str | None):
         raise HTTPException(status_code=403, detail="Email is not verified")
 
     email = info.get("email") or ""
-    if not re.search(r"\d", email):
+
+    # mo か fu か 数字いずれも含まないと認証NG
+    if not (re.search(r"\d", email) or re.search(r"mo", email)) or re.search(r"fu", email):
         raise HTTPException(status_code=403, detail="Digits required in email")
 
     return info  # {email, sub, name, ...}
